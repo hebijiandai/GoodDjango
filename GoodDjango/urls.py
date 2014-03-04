@@ -10,8 +10,8 @@ urlpatterns = patterns('',
                        # Examples:
                        # url(r'^$', 'GoodDjango.views.home', name='home'),
                        # url(r'^blog/', include('blog.urls')),
-                       url(r'^select2/', include('django_select2.urls')),
                        url(r'^admin/custom/', views.custom_view),
                        url(r'^admin/nonexist/',views.nonexist_view),
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^select2/', include('django_select2.urls')),
                        )

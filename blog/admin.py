@@ -11,14 +11,13 @@ from django_select2 import *
 from suit.widgets import *
 
 
-class MarkAdmin(admin.ModelAdmin):
+class MarkAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     list_display = ('mark',)
 
 
 admin.site.register(Mark, MarkAdmin)
 
-
-class QualificationAdmin(admin.ModelAdmin):
+class QualificationAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     list_display = ('qualification',)
 
 
@@ -31,20 +30,20 @@ class AuthorResource(resources.ModelResource):
         # 排除多对多字段
         # exclued=('mark',)
 
-class MarkChoices(AutoModelSelect2MultipleField):
-    queryset = Mark.objects
-    search_fields = ['name_icontains']
 
+#
+# class MarkChoices(AutoModelSelect2MultipleField):
+#     queryset = Mark.objects
+#     search_fields = ['mark__icontains',]
+#
 class QualificationChoices(AutoModelSelect2Field):
     queryset = Qualification.objects
-    search_fields=['name_icontains']
+    search_fields=['qualification__icontains',]
 
 
 class AuthorForm(ModelForm):
-    mark = MarkChoices(
-        label='博客标签',
-    )
-
+    mark = ModelSelect2MultipleField(label="博客标签", queryset=Mark.objects, required=False)
+    #有一个地方没解决：要设置自动下拉框
     qualification = QualificationChoices(
         label='资质',
         widget=AutoHeavySelect2Widget(
@@ -60,13 +59,13 @@ class AuthorForm(ModelForm):
             'blog': RedactorWidget,
             # 'blog':  CKEditorWidget,
             'author': EnclosedInput(prepend='icon-user',
-                                        append='<input type="button" '
-                                               'class="btn" onclick="window'
-                                               '.open(\'https://www.google'
-                                               '.com/\')" value="Search">',
-                                        attrs={'class': 'input-small'}),
+                                    append='<input type="button" '
+                                           'class="btn" onclick="window'
+                                           '.open(\'https://www.google'
+                                           '.com/\')" value="Search">',
+                                    attrs={'class': 'input-small'}),
             'title': EnclosedInput(prepend='icon-globe', append='end with',
-                                  attrs={'class': 'input-small'}),
+                                   attrs={'class': 'input-small'}),
 
         }
 

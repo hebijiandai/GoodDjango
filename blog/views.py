@@ -33,7 +33,6 @@ def custom_view(request):
     return render_to_response(template, context,
                               context_instance=RequestContext(request))
 
-
 @staff_member_required
 def nonexist_view(request):
     return render_to_response('admin/404.html', {'title': '404 ERROR TIPS'},
