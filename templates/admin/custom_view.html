@@ -1,0 +1,49 @@
+{% extends 'admin/base_site.html' %}
+{% block content %}
+    <div class="navbar">
+        <div class="navbar-inner">
+            <a class="brand" href="#">主题</a>
+            <ul class="nav">
+                <li class="#"><a href="#">主页</a></li>
+                <li><a href="#">第一链接</a></li>
+                <li><a href="#">第二链接</a></li>
+                <li><a href="#">第三链接</a></li>
+                <li><a href="#">第四链接</a></li>
+                <li><a href="#">第五链接</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="span2">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">博主</li>
+                        <li class="active">首页</li>
+                        <li class=""><a href="">博客连接</a></li>
+                        <li class="nav-header">首页</li>
+                        <li class=""><a href="">幽默</a></li>
+                        <li class=""><a href="">悲伤</a></li>
+                        <li class=""><a href="">喜剧</a></li>
+                    </ul>
+                </div>
+                <div class="span10">
+                    {% for post in posts %}
+                        <h1>{{ post.title }}</h1>
+                        <p>{{ post.author }}</p>
+                        <p>
+                            {% autoescape off %}
+                                {{ post.blog }}
+                            {% endautoescape %}
+                        </p>
+                        <p>{{ post.time }}</p>
+                        <p>
+                            -------------------------------------------------------------
+                        </p>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
