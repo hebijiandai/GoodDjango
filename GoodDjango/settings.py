@@ -91,8 +91,20 @@ SUIT_CONFIG = {
         # '-',
         {'app': 'auth', 'label':u'权限组','model': ('user','group'), 'icon': 'icon-lock'},
 
-        {'app':'blog','label':u'作者相关','model':(
-          'Qualification','Mark','Author','Myobject','Adress'),'icon': 'icon-leaf'},
+        # {'app':'blog','label':u'作者相关','model':(
+        #   'Qualification','Mark','Author','Myobject','Adress'),'icon': 'icon-leaf'},
+
+        {'label': u'基础数据', 'icon':'icon-cog', 'models': (
+            {'label': "物品归属", 'url': '/admin/blog/objectattribution'},
+             {'label': '相关标签', 'url': '/admin/blog/mark'},
+             {'label': '资质说明', 'url': '/admin/blog/qualification'},
+        )},
+
+   		{'label': u'作者相关', 'icon':'icon-cog', 'models': (
+            {'label': "个人博客", 'url': '/admin/blog/author'},
+             {'label': '物品列表', 'url': '/admin/blog/myobject'},
+             {'label': '地址', 'url': '/admin/blog/adress'},
+        )},
 
         {'label': u'自定义连接', 'icon':'icon-cog', 'models': (
             {'label': "AllenLee's Blog", 'url': '/admin/custom'},

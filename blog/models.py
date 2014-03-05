@@ -48,7 +48,7 @@ class Author(models.Model):
 
 class Objectattribution(models.Model):
     attribution = models.CharField('归属', max_length=50)
-    place = models.CharField('地点', max_length=50)
+    place = models.PositiveIntegerField('地点', default=0)
 
     def __unicode__(self):
         return unicode(self.attribution)
@@ -56,8 +56,9 @@ class Objectattribution(models.Model):
 
 class Myobject(models.Model):
     object = models.CharField('物品', max_length=50)
-    content = models.TextField('产品内容')
+    content = models.CharField('产品内容',max_length=255)
     attribution=models.ForeignKey(Objectattribution)
+    order=models.PositiveIntegerField('顺序',default=0)
     bontime = models.DateField('生产日期')
 
     def __unicode__(self):

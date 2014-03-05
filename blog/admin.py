@@ -9,16 +9,19 @@ from django.forms import ModelForm
 from suit_redactor.widgets import RedactorWidget
 from django_select2 import *
 from suit.widgets import *
+from suit.admin import *
+from suit.widgets import *
 
 
-class MarkAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    list_display = ('mark','license')
+class MarkAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('mark', 'license')
 
 
 admin.site.register(Mark, MarkAdmin)
 
-class QualificationAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    list_display = ('qualification','license','charactor','level')
+
+class QualificationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('qualification', 'license', 'charactor', 'level')
 
 
 admin.site.register(Qualification, QualificationAdmin)
@@ -92,29 +95,52 @@ class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 
 admin.site.register(Author, AuthorAdmin)
-
-class ObjectAttributionAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-     list_display = ('attribution','place',)
-
-
-admin.site.register(Objectattribution,ObjectAttributionAdmin)
-
-class MyobjectForm(ModelForm):
-    attribution=ModelSelect2Field(label='归属',queryset=Objectattribution.objects,required=False)
+# 主从表格式从这行开始,外键的做附属，被外键的做主表
+class MyobjectInlineForm(ModelForm):
     class Meta:
-        model = Myobject
-
         widgets = {
-            'content': RedactorWidget,
-            # 下面的富文本框有点难度，显示不完美
-            # 'content': CKEditorWidget(editor_options={'startupFocus': False}),
+            'object': TextInput(attrs={'class': 'input-mini'}),
+            'content': TextInput(attrs={'class': 'input-medium'}),
+            # 'attribution': TextInput(attrs={'class': 'input-mini'}),不能加
+            'bontime': SuitDateWidget,
+
         }
 
 
-class MyobjectAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+class MyobjectInline(SortableTabularInline):
+    form = MyobjectInlineForm
+    model = Myobject
+    fields = ('object', 'content', 'attribution', 'bontime')
+    extra = 1
+    verbose_name_plural = '物品列表子窗体'
+    sortable = 'order'
+
+
+class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin,admin.ModelAdmin):
+    search_fields = ('attribution',)
+    list_display = ('attribution', 'place','mynumber')
+    inlines = (MyobjectInline,)
+    sortable = 'place'
+
+    def mynumber(self,obj):
+        # return len(obj.attribution.all)
+        #还没解决
+        return 1
+
+admin.site.register(Objectattribution, MyObjectAttributionAdmin)
+
+
+class MyobjectForm(ModelForm):
+    attribution = ModelSelect2Field(label='归属', queryset=Objectattribution.objects, required=False)
+
+    class Meta:
+        model = Myobject
+
+
+class MyobjectAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     form = MyobjectForm
     search_fields = ('object', 'content')
-    list_display = ('object','attribution', 'bontime',)
+    list_display = ('object', 'attribution', 'bontime',)
 
 
 admin.site.register(Myobject, MyobjectAdmin)
