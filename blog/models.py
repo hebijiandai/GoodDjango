@@ -9,21 +9,24 @@ class Mark(models.Model):
     def __unicode__(self):
         return unicode(self.mark)
 
-    class Meta:
-        verbose_name = '文章标签'
-        verbose_name_plural = '文章标签'
+        # class Meta:
+        #     verbose_name = '文章标签'
+        #     verbose_name_plural = '文章标签'
 
 
 class Qualification(models.Model):
     qualification = models.CharField('资质', max_length=50)
     license = models.CharField('证书', max_length=50)
+    charactor = models.CharField('性格', max_length=50)
+    level = models.SmallIntegerField('级别')
+
 
     def __unicode__(self):
         return unicode(self.qualification)
 
-    class Meta:
-        verbose_name = '资质'
-        verbose_name_plural = '资质'
+        # class Meta:
+        #     verbose_name = '资质'
+        #     verbose_name_plural = '资质'
 
 
 class Author(models.Model):
@@ -35,27 +38,34 @@ class Author(models.Model):
     time = models.DateField('写作日期')
 
     def __unicode__(self):
-        return unicode(self.author)
+        return unicode(self.author,)
 
     class Meta:
+        ordering = ['time']
+        # verbose_name = '相关博客'
+        # verbose_name_plural = '相关博客'
 
-        '''因为Django的Model会按照[app_label]_[model_name]的格式去找数据库表'''
-        ordering=['time']
-        verbose_name = '相关博客'
-        verbose_name_plural = '相关博客'
+
+class Objectattribution(models.Model):
+    attribution = models.CharField('归属', max_length=50)
+    place = models.CharField('地点', max_length=50)
+
+    def __unicode__(self):
+        return unicode(self.attribution)
 
 
 class Myobject(models.Model):
     object = models.CharField('物品', max_length=50)
     content = models.TextField('产品内容')
+    attribution=models.ForeignKey(Objectattribution)
     bontime = models.DateField('生产日期')
 
     def __unicode__(self):
         return unicode(self.object)
 
-    class Meta:
-        verbose_name = '物品'
-        verbose_name_plural = '物品'
+        # class Meta:
+        #     verbose_name = '物品'
+        #     verbose_name_plural = '物品'
 
 
 class Adress(models.Model):
@@ -65,9 +75,10 @@ class Adress(models.Model):
     def __unicode__(self):
         return unicode(self.receivename)
 
-    class Meta:
-        verbose_name = '收件地址'
-        verbose_name_plural = '收件地址'
+        # class Meta:
+        #     verbose_name = '收件地址'
+        #     verbose_name_plural = '收件地址'
+
 
 class CustomView(models.Model):
     pass

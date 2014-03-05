@@ -12,13 +12,13 @@ from suit.widgets import *
 
 
 class MarkAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    list_display = ('mark',)
+    list_display = ('mark','license')
 
 
 admin.site.register(Mark, MarkAdmin)
 
 class QualificationAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    list_display = ('qualification',)
+    list_display = ('qualification','license','charactor','level')
 
 
 admin.site.register(Qualification, QualificationAdmin)
@@ -36,23 +36,24 @@ class AuthorResource(resources.ModelResource):
 #     queryset = Mark.objects
 #     search_fields = ['mark__icontains',]
 #
-class QualificationChoices(AutoModelSelect2Field):
-    queryset = Qualification.objects
-    search_fields=['qualification__icontains',]
+# class QualificationChoices(AutoModelSelect2Field):
+#     queryset = Qualification.objects
+#     search_fields=['qualification__icontains',]
 
 
 class AuthorForm(ModelForm):
     mark = ModelSelect2MultipleField(label="博客标签", queryset=Mark.objects, required=False)
+    qualification = ModelSelect2Field(label="个人资质", queryset=Qualification.objects, required=False)
     #有一个地方没解决：要设置自动下拉框
-    qualification = QualificationChoices(
-        label='资质',
-        widget=AutoHeavySelect2Widget(
-            select2_options={
-                'width': '30px',
-                'placeholder': 'Lookup ...'
-            }
-        )
-    )
+    # qualification = QualificationChoices(
+    #     label='资质',
+    #     widget=AutoHeavySelect2Widget(
+    #         select2_options={
+    #             'width': '30px',
+    #             'placeholder': 'Lookup ...'
+    #         }
+    #     )
+    # )
     class Meta:
         model = Author
         widgets = {
@@ -64,7 +65,7 @@ class AuthorForm(ModelForm):
                                            '.open(\'https://www.google'
                                            '.com/\')" value="Search">',
                                     attrs={'class': 'input-small'}),
-            'title': EnclosedInput(prepend='icon-globe', append='end with',
+            'title': EnclosedInput(prepend='icon-globe', append='Consult Sherock Holmels',
                                    attrs={'class': 'input-small'}),
 
         }
@@ -92,8 +93,14 @@ class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 admin.site.register(Author, AuthorAdmin)
 
+class ObjectAttributionAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+     list_display = ('attribution','place',)
+
+
+admin.site.register(Objectattribution,ObjectAttributionAdmin)
 
 class MyobjectForm(ModelForm):
+    attribution=ModelSelect2Field(label='归属',queryset=Objectattribution.objects,required=False)
     class Meta:
         model = Myobject
 
@@ -104,10 +111,10 @@ class MyobjectForm(ModelForm):
         }
 
 
-class MyobjectAdmin(admin.ModelAdmin):
+class MyobjectAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     form = MyobjectForm
     search_fields = ('object', 'content')
-    list_display = ('object', 'bontime',)
+    list_display = ('object','attribution', 'bontime',)
 
 
 admin.site.register(Myobject, MyobjectAdmin)
