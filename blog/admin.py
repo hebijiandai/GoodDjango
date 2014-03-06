@@ -122,7 +122,7 @@ class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin, admin
     sortable = 'place'
 
     def mynumber(self, obj):
-        # return len(obj.attribution.all)
+        # return len(obj.objectattribution_set.all)
         # 还没解决
         return 1
 
