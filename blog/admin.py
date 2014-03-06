@@ -86,37 +86,47 @@ class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 admin.site.register(Author, AuthorAdmin)
 # 主从表格式从这行开始,外键的做附属，被外键的做主表
 class MyobjectInlineForm(ModelForm):
+    # object=ModelSelect2Field(queryset=Qualification.objects,required=False)
     class Meta:
         widgets = {
-            'object': TextInput(attrs={'class': 'input-mini'}),
+            # 'object': TextInput(attrs={'class': 'input-mini'}),
+            'object': TextInput(attrs={'class': 'input-small'}),
             'content': TextInput(attrs={'class': 'input-medium'}),
             # 'attribution': TextInput(attrs={'class': 'input-mini'}),不能加
+            'material':Select(attrs={'class':'input-small'}),
             'bontime': SuitDateWidget,
 
         }
+       
 
 
 class MyobjectInline(SortableTabularInline):
     form = MyobjectInlineForm
     model = Myobject
-    fields = ('object', 'content', 'attribution', 'bontime')
+    fields = ('object', 'content', 'attribution','material', 'bontime')
     extra = 1
     verbose_name_plural = '物品列表子窗体'
     sortable = 'order'
 
 
 class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin,admin.ModelAdmin):
+    form = MyobjectInlineForm
     search_fields = ('attribution',)
     list_display = ('attribution', 'place','mynumber')
     inlines = (MyobjectInline,)
     sortable = 'place'
 
     def mynumber(self,obj):
-        return len(obj.attribution.all)
+        # return len(obj.attribution.all)
         #还没解决
-        # return 1
+        return 1
 
 admin.site.register(Objectattribution, MyObjectAttributionAdmin)
+
+class MaterialAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+    list_display = ('material',)
+
+admin.site.register(Material, MaterialAdmin)
 
 
 class MyobjectForm(ModelForm):

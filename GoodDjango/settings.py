@@ -96,9 +96,10 @@ SUIT_CONFIG = {
         #   'Qualification','Mark','Author','Myobject','Adress'),'icon': 'icon-leaf'},
 
         {'label': u'基础数据', 'icon':'icon-cog', 'models': (
-            {'label': "物品归属", 'url': '/admin/blog/objectattribution'},
+            {'label': "物品归属(含物品编辑)", 'url': '/admin/blog/objectattribution'},
              {'label': '相关标签', 'url': '/admin/blog/mark'},
              {'label': '资质说明', 'url': '/admin/blog/qualification'},
+             {'label': '物品材料构成', 'url': '/admin/blog/material'},
         )},
 
    		{'label': u'作者相关', 'icon':'icon-cog', 'models': (
