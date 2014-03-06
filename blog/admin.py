@@ -10,7 +10,7 @@ from suit_redactor.widgets import RedactorWidget
 from django_select2 import *
 from suit.widgets import *
 from suit.admin import *
-from suit.widgets import *
+from reversion import VersionAdmin
 
 
 class MarkAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -32,17 +32,6 @@ class AuthorResource(resources.ModelResource):
         model = Author
         # 排除多对多字段
         # exclued=('mark',)
-
-
-#
-# class MarkChoices(AutoModelSelect2MultipleField):
-#     queryset = Mark.objects
-#     search_fields = ['mark__icontains',]
-#
-# class QualificationChoices(AutoModelSelect2Field):
-#     queryset = Qualification.objects
-#     search_fields=['qualification__icontains',]
-
 
 class AuthorForm(ModelForm):
     mark = ModelSelect2MultipleField(label="博客标签", queryset=Mark.objects, required=False)
@@ -97,26 +86,31 @@ class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 admin.site.register(Author, AuthorAdmin)
 # 主从表格式从这行开始,外键的做附属，被外键的做主表
 class MyobjectInlineForm(ModelForm):
+    # object=ModelSelect2Field(queryset=Qualification.objects,required=False)
     class Meta:
         widgets = {
-            'object': TextInput(attrs={'class': 'input-mini'}),
+            # 'object': TextInput(attrs={'class': 'input-mini'}),
+            'object': TextInput(attrs={'class': 'input-small'}),
             'content': TextInput(attrs={'class': 'input-medium'}),
             # 'attribution': TextInput(attrs={'class': 'input-mini'}),不能加
+            'material':Select(attrs={'class':'input-small'}),
             'bontime': SuitDateWidget,
 
         }
+       
 
 
 class MyobjectInline(SortableTabularInline):
     form = MyobjectInlineForm
     model = Myobject
-    fields = ('object', 'content', 'attribution', 'bontime')
+    fields = ('object', 'content', 'attribution','material', 'bontime')
     extra = 1
     verbose_name_plural = '物品列表子窗体'
     sortable = 'order'
 
 
 class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin,admin.ModelAdmin):
+    form = MyobjectInlineForm
     search_fields = ('attribution',)
     list_display = ('attribution', 'place','mynumber')
     inlines = (MyobjectInline,)
@@ -129,6 +123,11 @@ class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin,admin.
 
 admin.site.register(Objectattribution, MyObjectAttributionAdmin)
 
+class MaterialAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+    list_display = ('material',)
+
+admin.site.register(Material, MaterialAdmin)
+
 
 class MyobjectForm(ModelForm):
     attribution = ModelSelect2Field(label='归属', queryset=Objectattribution.objects, required=False)
@@ -137,7 +136,7 @@ class MyobjectForm(ModelForm):
         model = Myobject
 
 
-class MyobjectAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+class MyobjectAdmin(ImportExportModelAdmin):
     form = MyobjectForm
     search_fields = ('object', 'content')
     list_display = ('object', 'attribution', 'bontime',)
@@ -146,7 +145,7 @@ class MyobjectAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 admin.site.register(Myobject, MyobjectAdmin)
 
 
-class AdressAdmin(admin.ModelAdmin):
+class AdressAdmin(VersionAdmin):
     list_display = ('receivename', 'adress')
 
 
