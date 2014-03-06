@@ -1,0 +1,30 @@
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="span2">
+                    <ul class="nav nav-list">
+                        <li class="nav-header">我的自定义材料单</li>
+                        <li class="active">首页</li>
+                        <li class=""><a href="">材料连接</a></li>
+                        <li class="nav-header">首页</li>
+                        <li class=""><a href="">共晶点</a></li>
+                        <li class=""><a href="">自燃点</a></li>
+                    </ul>
+                </div>
+                <div class="span10">
+                    {% for post in posts %}
+                        <h1>{{ post.title }}</h1>
+                        <p>{{ post.author }}</p>
+                        <p>
+                            {% autoescape off %}
+                                {{ post.blog }}
+                            {% endautoescape %}
+                        </p>
+                        <p>{{ post.time }}</p>
+                        <p>
+                            -------------------------------------------------------------
+                        </p>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>

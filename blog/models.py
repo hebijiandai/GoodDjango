@@ -54,11 +54,11 @@ class Objectattribution(models.Model):
 
 class Material(models.Model):
     material=models.CharField('material',max_length=50)
-    Autoignition_temperature=models.CharField('Autoignition temperature',max_length=50)
+    Autoignition_temperature=models.SmallIntegerField('Autoignition temperature',max_length=50)
     Binary_phase_diagram=models.CharField('Binary phase diagram',max_length=50)
     Boiling_point=models.CharField('Boiling point',max_length=50)
     Coefficient_of_thermal_expansion=models.CharField('Coefficient of thermal expansion',max_length=50)
-    Critical_temperature=models.CharField('Critical temperature',max_length=50)
+    Critical_temperature=models.SmallIntegerField('Critical temperature',max_length=50)
     Curie_point=models.CharField('Curie point',max_length=50)
     Emissivity=models.CharField('Emissivity',max_length=50)
     Eutectic_point=models.CharField('Eutectic point',max_length=50)
