@@ -20,7 +20,6 @@ class Qualification(models.Model):
     charactor = models.CharField('性格', max_length=50)
     level = models.SmallIntegerField('级别')
 
-
     def __unicode__(self):
         return unicode(self.qualification)
 
@@ -38,7 +37,7 @@ class Author(models.Model):
     time = models.DateField('写作日期')
 
     def __unicode__(self):
-        return unicode(self.author,)
+        return unicode(self.author)
 
     class Meta:
         ordering = ['time']
@@ -56,9 +55,9 @@ class Objectattribution(models.Model):
 
 class Myobject(models.Model):
     object = models.CharField('物品', max_length=50)
-    content = models.CharField('产品内容',max_length=255)
-    attribution=models.ForeignKey(Objectattribution)
-    order=models.PositiveIntegerField('顺序',default=0)
+    content = models.CharField('产品内容', max_length=255)
+    attribution = models.ForeignKey(Objectattribution)
+    order = models.PositiveIntegerField('顺序', default=0)
     bontime = models.DateField('生产日期')
 
     def __unicode__(self):

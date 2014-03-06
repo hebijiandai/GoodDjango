@@ -47,6 +47,7 @@ INSTALLED_APPS = (
     'suit_redactor',
     'suit_ckeditor',
     'import_export',
+    'reversion',
 
 
 )

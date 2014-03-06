@@ -10,7 +10,7 @@ from suit_redactor.widgets import RedactorWidget
 from django_select2 import *
 from suit.widgets import *
 from suit.admin import *
-from suit.widgets import *
+from reversion import VersionAdmin
 
 
 class MarkAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -32,17 +32,6 @@ class AuthorResource(resources.ModelResource):
         model = Author
         # 排除多对多字段
         # exclued=('mark',)
-
-
-#
-# class MarkChoices(AutoModelSelect2MultipleField):
-#     queryset = Mark.objects
-#     search_fields = ['mark__icontains',]
-#
-# class QualificationChoices(AutoModelSelect2Field):
-#     queryset = Qualification.objects
-#     search_fields=['qualification__icontains',]
-
 
 class AuthorForm(ModelForm):
     mark = ModelSelect2MultipleField(label="博客标签", queryset=Mark.objects, required=False)
@@ -123,9 +112,9 @@ class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin,admin.
     sortable = 'place'
 
     def mynumber(self,obj):
-        # return len(obj.attribution.all)
+        return len(obj.attribution.all)
         #还没解决
-        return 1
+        # return 1
 
 admin.site.register(Objectattribution, MyObjectAttributionAdmin)
 
@@ -137,7 +126,7 @@ class MyobjectForm(ModelForm):
         model = Myobject
 
 
-class MyobjectAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+class MyobjectAdmin(ImportExportModelAdmin):
     form = MyobjectForm
     search_fields = ('object', 'content')
     list_display = ('object', 'attribution', 'bontime',)
@@ -146,7 +135,7 @@ class MyobjectAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 admin.site.register(Myobject, MyobjectAdmin)
 
 
-class AdressAdmin(admin.ModelAdmin):
+class AdressAdmin(VersionAdmin):
     list_display = ('receivename', 'adress')
 
 
