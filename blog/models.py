@@ -81,6 +81,9 @@ class Material(models.Model):
     Vapor_pressure=models.CharField('Vapor pressure',max_length=50)
     Vicat_softening_point=models.CharField('Vicat softening point',max_length=50)
 
+    def __unicode__(self):
+        return unicode(self.material)
+
 class Myobject(models.Model):
     object = models.CharField('物品', max_length=50)
     content = models.CharField('产品内容', max_length=255)

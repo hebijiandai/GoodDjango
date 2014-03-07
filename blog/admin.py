@@ -117,11 +117,11 @@ class MyobjectInline(SortableTabularInline):
 class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin, admin.ModelAdmin):
     form = MyobjectInlineForm
     search_fields = ('attribution',)
-    list_display = ('attribution', 'place', 'mynumber')
+    list_display = ('attribution', 'place', 'amount')
     inlines = (MyobjectInline,)
     sortable = 'place'
 
-    def mynumber(self, obj):
+    def amount(self, obj):
         return len(obj.myobject_set.all())
 
 admin.site.register(Objectattribution, MyObjectAttributionAdmin)

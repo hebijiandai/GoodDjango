@@ -26,7 +26,7 @@
       <file leaf-file-name="models.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="52" column="26" selection-start="1410" selection-end="1451" vertical-scroll-proportion="0.0" vertical-offset="607" max-vertical-offset="1547">
+            <state line="83" column="26" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.0" vertical-offset="1134" max-vertical-offset="2074">
               <folding />
             </state>
           </provider>
@@ -44,7 +44,7 @@
       <file leaf-file-name="views.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/blog/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
               <folding />
             </state>
           </provider>
@@ -53,7 +53,7 @@
       <file leaf-file-name="admin.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="122" column="22" selection-start="3713" selection-end="3713" vertical-scroll-proportion="0.7543582" vertical-offset="1598" max-vertical-offset="2703">
+            <state line="27" column="0" selection-start="753" selection-end="753" vertical-scroll-proportion="0.7274168" vertical-offset="0" max-vertical-offset="3791">
               <folding>
                 <element signature="e#15#47#0" expanded="true" />
               </folding>
@@ -64,7 +64,7 @@
       <file leaf-file-name="settings.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GoodDjango/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="110" column="35" selection-start="2956" selection-end="2956" vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="2839">
+            <state line="112" column="35" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.0" vertical-offset="1399" max-vertical-offset="2873">
               <folding />
             </state>
           </provider>
@@ -133,6 +133,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GoodDjango" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoodDjango" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GoodDjango" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -254,7 +268,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1280" height="728" extended-state="6" />
+    <frame x="0" y="22" width="1280" height="728" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -289,6 +303,43 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/blog/models.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="52" column="26" selection-start="1410" selection-end="1451" vertical-scroll-proportion="0.0" vertical-offset="607" max-vertical-offset="1547">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/tests.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="153">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="122" column="22" selection-start="3713" selection-end="3713" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="2703">
+          <folding>
+            <element signature="e#15#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GoodDjango/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="110" column="35" selection-start="2956" selection-end="2956" vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="2839">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
           <folding />
         </state>
@@ -319,21 +370,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GoodDjango/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="110" column="35" selection-start="2956" selection-end="2956" vertical-scroll-proportion="0.0" vertical-offset="1365" max-vertical-offset="2839">
+        <state line="112" column="35" selection-start="3045" selection-end="3045" vertical-scroll-proportion="0.0" vertical-offset="1399" max-vertical-offset="2873">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="26" selection-start="1410" selection-end="1451" vertical-scroll-proportion="0.0" vertical-offset="607" max-vertical-offset="1547">
+        <state line="83" column="26" selection-start="3482" selection-end="3482" vertical-scroll-proportion="0.0" vertical-offset="1134" max-vertical-offset="2074">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="122" column="22" selection-start="3713" selection-end="3713" vertical-scroll-proportion="0.7543582" vertical-offset="1598" max-vertical-offset="2703">
+        <state line="27" column="0" selection-start="753" selection-end="753" vertical-scroll-proportion="0.7274168" vertical-offset="0" max-vertical-offset="3791">
           <folding>
             <element signature="e#15#47#0" expanded="true" />
           </folding>
