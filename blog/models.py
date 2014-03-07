@@ -83,10 +83,8 @@ class Material(models.Model):
 
     def __unicode__(self):
         return unicode(self.material)
-<<<<<<< HEAD
 
-=======
->>>>>>> FETCH_HEAD
+
 class Myobject(models.Model):
     object = models.CharField('物品', max_length=50)
     content = models.CharField('产品内容', max_length=50)
