@@ -31,9 +31,6 @@ class AuthorResource(resources.ModelResource):
 
     class Meta:
         model = Author
-        # 排除多对多字段
-        # exclued=('mark',)
-
 
 class AuthorForm(ModelForm):
     mark = ModelSelect2MultipleField(
@@ -148,12 +145,6 @@ class MaterialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 
     fieldsets = [
-
-        # (None,
-        #     {'classes':('suit-tab suit-tab-montain'),
-        #    'fields':['Thermal_expansion','Seebeck_coefficient',
-        #    'Triple_point','Vapor_pressure','Vicat_softening_point',]}),
-
 
         ('material', {
             # 'classes': ('full-width',),
