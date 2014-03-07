@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'suit_ckeditor',
     'import_export',
     'reversion',
+    'django_extensions',
 
 
 )

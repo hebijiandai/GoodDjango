@@ -65,7 +65,7 @@ class AuthorForm(ModelForm):
         }
 
 
-class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     search_fields = ('author', 'title', 'mark', 'blog')
     list_display = ('author', 'title', 'time')
 
