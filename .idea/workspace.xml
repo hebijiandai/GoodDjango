@@ -62,7 +62,7 @@
       <file leaf-file-name="base.html" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="243" column="9" selection-start="9197" selection-end="9197" vertical-scroll-proportion="0.82711864" vertical-offset="3643" max-vertical-offset="4233">
+            <state line="83" column="37" selection-start="4196" selection-end="4196" vertical-scroll-proportion="3.251152" vertical-offset="0" max-vertical-offset="4964">
               <folding />
             </state>
           </provider>
@@ -71,7 +71,7 @@
       <file leaf-file-name="suit.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/suit/css/suit.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="277" column="5" selection-start="55795" selection-end="55800" vertical-scroll-proportion="-7.5384617" vertical-offset="4513" max-vertical-offset="5321">
+            <state line="277" column="64" selection-start="55812" selection-end="55859" vertical-scroll-proportion="-8.846154" vertical-offset="4479" max-vertical-offset="5321">
               <folding />
             </state>
           </provider>
@@ -286,7 +286,8 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="SearchEverywhereHistory" value="&#10;sui&#10;css&#10;b&#10;set&#10;mo&#10;sett&#10;se" />
+    <property name="SearchEverywhereHistory" value="&#10;css&#10;sui&#10;b&#10;set&#10;mo&#10;sett&#10;se" />
+    <property name="LayoutCode.rearrangeEntriesDjangoTemplate" value="false" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -476,7 +477,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23744293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23744293" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -604,14 +605,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/suit/css/suit.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="277" column="5" selection-start="55795" selection-end="55800" vertical-scroll-proportion="-7.5384617" vertical-offset="4513" max-vertical-offset="5321">
+        <state line="277" column="64" selection-start="55812" selection-end="55859" vertical-scroll-proportion="-8.846154" vertical-offset="4479" max-vertical-offset="5321">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="243" column="9" selection-start="9197" selection-end="9197" vertical-scroll-proportion="0.82711864" vertical-offset="3643" max-vertical-offset="4233">
+        <state line="83" column="37" selection-start="4196" selection-end="4196" vertical-scroll-proportion="3.251152" vertical-offset="0" max-vertical-offset="4964">
           <folding />
         </state>
       </provider>
