@@ -28,7 +28,7 @@
 </head>
 {% load i18n %}
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+<body onload="loadCounter()" {% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}>
 
 <!-- Sticky footer wrap -->
 <div id="wrap">
@@ -68,7 +68,7 @@
                                 </div>-->
                                 <!--sidebar change css-->
                                 <div class="header-column">
-                                    <a class="grey" id="myButton" onClick="hideButton();">隐藏菜单</a>
+                                    <a class="grey" id="myButton" onClick="clickCounter();">隐藏菜单</a>
                                 </div>
                                 <!--sidebar change css-->
                             </div>
@@ -167,9 +167,6 @@
 
 
 
-
-
-
                                                 {% if '/' in search_url %}{{ search_url }}{% else %}{% url search_url %}{% endif %}"
                                               method="GET">
                                             <input type="text" name="q" class="input-medium search-query"
@@ -242,9 +239,9 @@
 
 <script>
     function changeCss() {
-        //完全隐藏箭头的话则加上这句
-        //var suitInput = document.getElementById('suit-left');
-        //suitInput.style.display = 'none';
+        //If you want to hide the arrow absolutely,add this.
+        var suitInput = document.getElementById('suit-left');
+        suitInput.style.display = 'none';
 
         var wrap = document.getElementById('wrap');
         wrap.style.background = 'inherit';
@@ -253,30 +250,32 @@
         suitCol.style.paddingLeft = '0';
     }
 
-    //重新载入css，暂时不需要
-    function reloadStylesheets() {
-        //有待研究，现在暂时不需要
-    }
+    //Use session storage to complete the work.
+    function clickCounter() {
 
-    //改变按钮名称，调用则用onClick="toggleText(this.id)"
-    function toggleText(button_id) {
-        var el = document.getElementById(button_id);
-        if (el.firstChild.data == "隐藏菜单") {
-            el.firstChild.data = "显示菜单";
+        if (document.getElementById('myButton').firstChild.data == "Hide Menu") {
+            document.getElementById('myButton').firstChild.data = "Show Menu";
+            changeCss();
         }
         else {
-            //call the css change function
-            el.firstChild.data = "隐藏菜单";
+            window.location.reload();
+            document.getElementById('myButton').firstChild.data = "Hide Menu";
         }
+
+        sessionStorage.menuMark = document.getElementById('myButton').firstChild.data;
+
     }
 
-    //隐藏按钮和图标
-    function hideButton() {
-        //简单方便！
-        document.getElementById('myButton').style.visibility = 'hidden';
-        document.getElementById('myHeader').style.visibility = 'hidden';
-        changeCss();
+    function loadCounter() {
+        document.getElementById('myButton').firstChild.data = sessionStorage.menuMark;
+
+        if (document.getElementById('myButton').firstChild.data == "Show Menu") {
+            myData = "隐藏菜单";
+            changeCss();
+        }
+
     }
+
 
 </script>
 
