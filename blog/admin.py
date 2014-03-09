@@ -68,6 +68,7 @@ class AuthorForm(ModelForm):
 class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     search_fields = ('author', 'title', 'mark', 'blog')
     list_display = ('author', 'title', 'time')
+    date_hierarchy=('time')
 
     resource_class = AuthorResource
     form = AuthorForm
