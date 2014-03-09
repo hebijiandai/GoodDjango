@@ -76,7 +76,7 @@ class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     fieldsets = [
 
         (None,
-         {'fields': ['author', 'mark', 'title', 'qualification', 'time']}),
+         {'fields': ['author', 'mark', 'title', 'qualification', 'time','myfile']}),
 
         ('博客内容', {
             'classes': ('full-width',),

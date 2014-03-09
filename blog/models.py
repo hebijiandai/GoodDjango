@@ -35,6 +35,7 @@ class Author(models.Model):
     title = models.CharField('标题', max_length=150)
     qualification = models.ForeignKey(Qualification)
     mark = models.ManyToManyField(Mark)
+    myfile=models.FileField('我的文件',upload_to='./myfile')
     blog = models.TextField('博客内容')
     time = models.DateField('写作日期')
 
