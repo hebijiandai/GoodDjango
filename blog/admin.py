@@ -59,8 +59,9 @@ class AuthorForm(ModelForm):
                                            '.open(\'https://www.google'
                                            '.com/\')" value="Search">',
                                     attrs={'class': 'input-small'}),
-            'title': EnclosedInput(prepend='icon-globe', append='Consult Sherock Holmels',
-                                   attrs={'class': 'input-small'}),
+            'title': EnclosedInput(prepend='icon-globe', append=u'夏洛克·福尔摩斯向你致意',
+                                   attrs={'class': 'input-medium'}),
+            'frequency':EnclosedInput(prepend=u'第',append=u'次',attrs={'class':'input-mini'}),
 
         }
 
@@ -76,7 +77,8 @@ class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     fieldsets = [
 
         (None,
-         {'fields': ['author', 'mark', 'title', 'qualification', 'time','myfile']}),
+         {'fields': ['author', 'mark', 'title', 'qualification',
+                     'time','projectname','frequency','myfile']}),
 
         ('博客内容', {
             'classes': ('full-width',),

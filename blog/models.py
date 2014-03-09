@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
+import datetime
+import os
+
 
 class Mark(models.Model):
     mark = models.CharField('标签', max_length=50)
@@ -29,18 +32,42 @@ class Qualification(models.Model):
         verbose_name = '资质'
         verbose_name_plural = '资质'
 
+# 自定义Filefield，Imaginfiled的路径名
+def get_photo_path(instance, filename):
+    '''dynamic upload path'''
+    mydate = datetime.datetime.now().strftime('%Y%m')
+    #分离文件名和文件扩展名
+    fname, ext = os.path.splitext(filename)
+    return './%s/%s-%s-%s-第%s号文件%s' % (instance.projectname,instance.author,
+                                       instance.title,mydate,instance.id,ext.lower())
+
+
+
 @python_2_unicode_compatible
 class Author(models.Model):
     author = models.CharField('作者', max_length=50)
     title = models.CharField('标题', max_length=150)
     qualification = models.ForeignKey(Qualification)
     mark = models.ManyToManyField(Mark)
-    myfile=models.FileField('我的文件',upload_to='./myfile')
+    myfile = models.FileField('我的文件', upload_to=get_photo_path)
+    projectname=models.CharField('项目备注',max_length=50)
+    frequency=models.SmallIntegerField('提交频次',max_length=10)
     blog = models.TextField('博客内容')
     time = models.DateField('写作日期')
 
     def __str__(self):
         return self.author
+    #如果文件同名，则替换，删除掉原来的
+    def save(self, *args, **kwargs):
+        # delete old file when replacing by updating the file
+        try:
+            this = Author.objects.get(id=self.id)
+            #只比较了文件名，很好！
+            if this.myfile != self.myfile:
+                this.myfile.delete(save=False)
+        except: pass # when new photo then we do nothing, normal case
+        super(Author, self).save(*args, **kwargs)
+
 
     # def __unicode__(self):
     #     return unicode(self.author)
@@ -59,8 +86,8 @@ class Objectattribution(models.Model):
         return unicode(self.attribution)
 
     class Meta:
-        verbose_name='物品归属'
-        verbose_name_plural='物品归属'
+        verbose_name = '物品归属'
+        verbose_name_plural = '物品归属'
 
 
 class Material(models.Model):
