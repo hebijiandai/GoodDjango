@@ -3,6 +3,7 @@ from django.contrib import admin
 from blog.models import *
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
+import import_export
 
 from django.forms import ModelForm
 # from suit_ckeditor.widgets import CKEditorWidget
@@ -26,27 +27,27 @@ class QualificationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 admin.site.register(Qualification, QualificationAdmin)
 
-
-class AuthorResource(resources.ModelResource):
-
-    class Meta:
-        model = Author
-
 class AuthorForm(ModelForm):
     mark = ModelSelect2MultipleField(
-        label="博客标签", queryset=Mark.objects, required=False)
+        label="博客标签",
+        queryset=Mark.objects,
+        widget=Select2MultipleWidget(
+            select2_options={
+                'width': '300px',
+                'placeholder': '请点击选择相关项目...',
+            }
+        )
+    )
     qualification = ModelSelect2Field(
-        label="个人资质", queryset=Qualification.objects, required=False)
-    # 有一个地方没解决：要设置自动下拉框
-    # qualification = QualificationChoices(
-    #     label='资质',
-    #     widget=AutoHeavySelect2Widget(
-    #         select2_options={
-    #             'width': '30px',
-    #             'placeholder': 'Lookup ...'
-    #         }
-    #     )
-    # )
+        label="个人资质",
+        queryset=Qualification.objects,
+        widget=Select2Widget(
+            select2_options={
+                'width': '200px',
+            }
+        )
+    )
+
 
     class Meta:
         model = Author
@@ -65,6 +66,11 @@ class AuthorForm(ModelForm):
 
         }
 
+
+class AuthorResource(resources.ModelResource):
+    # author= import_export.fields.Field(column_name='作者')
+    class Meta:
+        model = Author
 
 class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
     search_fields = ('author', 'title', 'mark', 'blog')

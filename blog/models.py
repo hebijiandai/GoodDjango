@@ -15,6 +15,7 @@ class Mark(models.Model):
         return unicode(self.mark)
 
     class Meta:
+        ordering=['mark']
         verbose_name = '文章标签'
         verbose_name_plural = '文章标签'
 
@@ -59,7 +60,7 @@ class Author(models.Model):
         return self.author
     #如果文件同名，则替换，删除掉原来的
     def save(self, *args, **kwargs):
-        # delete old file when replacing by updating the file
+        # delete old file whe n replacing by updating the file
         try:
             this = Author.objects.get(id=self.id)
             #只比较了文件名，很好！
