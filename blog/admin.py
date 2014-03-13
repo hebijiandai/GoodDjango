@@ -34,7 +34,7 @@ class AuthorForm(ModelForm):
         widget=Select2MultipleWidget(
             select2_options={
                 'width': '300px',
-                'placeholder': '请点击选择相关项目...',
+                'placeholder': 'Please select some relevant items...',
             }
         )
     )
