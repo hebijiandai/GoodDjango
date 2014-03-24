@@ -29,7 +29,7 @@ admin.site.register(Qualification, QualificationAdmin)
 
 class AuthorForm(ModelForm):
     mark = ModelSelect2MultipleField(
-        label="博客标签",
+        label="博客的标签",
         queryset=Mark.objects,
         widget=Select2MultipleWidget(
             select2_options={

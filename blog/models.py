@@ -16,8 +16,8 @@ class Mark(models.Model):
 
     class Meta:
         ordering=['mark']
-        verbose_name = '文章标签'
-        verbose_name_plural = '文章标签'
+        verbose_name = '文章的标签'
+        verbose_name_plural = '文章的标签'
 
 
 class Qualification(models.Model):
