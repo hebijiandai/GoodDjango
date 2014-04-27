@@ -73,7 +73,7 @@ class AuthorResource(resources.ModelResource):
         model = Author
 
 class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
-    search_fields = ('author', 'title', 'mark', 'blog')
+    search_fields = ('author', 'title', 'blog')
     list_display = ('author', 'title', 'time')
     date_hierarchy=('time')
 

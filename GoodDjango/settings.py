@@ -66,6 +66,8 @@ TEMPLATE_DIRS = {
 
 
 # Django Suit configuration example
+#关于permisson要研究清楚，的确是不错的课题，有各种权限可以控制
+#注意，分组来控制权限，比较好控制
 SUIT_CONFIG = {
     # header
     'ADMIN_NAME': '信息管理系统',
@@ -78,7 +80,7 @@ SUIT_CONFIG = {
     # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
 
     # menu
-    # 'SEARCH_URL': '/admin/blog/Author/',
+    'SEARCH_URL': '/admin/blog/author/',
     'MENU_ICONS': {
        'sites': 'icon-leaf',
        'auth': 'icon-lock',
@@ -97,21 +99,21 @@ SUIT_CONFIG = {
         #   'Qualification','Mark','Author','Myobject','Adress'),'icon': 'icon-leaf'},
 
         {'label': u'基础数据', 'icon':'icon-cog', 'models': (
-            {'label': "物品归属(含物品编辑)", 'url': '/admin/blog/objectattribution'},
-             {'label': '相关标签', 'url': '/admin/blog/mark'},
+            {'label': "物品归属(含物品编辑)", 'permissions': 'auth.add_user','url': '/admin/blog/objectattribution'},
+             {'label': '相关标签', 'permissions': 'auth.add_user','url': '/admin/blog/mark'},
              {'label': '资质说明', 'url': '/admin/blog/qualification'},
-             {'label': '物品材料构成', 'url': '/admin/blog/material'},
+             {'label': '物品材料构成', 'permissions': 'auth.add_user','url': '/admin/blog/material'},
         )},
 
-   		{'label': u'作者相关', 'icon':'icon-cog', 'models': (
+   		{'label': u'作者相关','icon':'icon-cog', 'models': (
             {'label': "个人博客", 'url': '/admin/blog/author'},
-             {'label': '物品列表', 'url': '/admin/blog/myobject'},
-             {'label': '地址', 'url': '/admin/blog/adress'},
+             {'label': '物品列表','permissions': 'auth.add_user', 'url': '/admin/blog/myobject'},
+             {'label': '地址', 'permissions': 'auth.add_user','url': '/admin/blog/adress'},
         )},
 
-        {'label': u'自定义连接', 'icon':'icon-cog', 'models': (
-            {'label': "AllenLee's Blog", 'url': '/admin/custom'},
-             {'label': '404 error page', 'url': '/admin/nonexist'}
+        {'label': u'自定义连接', 'permissions': 'auth.add_user','icon':'icon-cog', 'models': (
+            {'label': "AllenLee's Blog", 'permissions': 'auth.add_user','url': '/admin/custom'},
+             {'label': '404 error page', 'permissions': 'auth.add_user','url': '/admin/nonexist'}
         )},
     ),
 
