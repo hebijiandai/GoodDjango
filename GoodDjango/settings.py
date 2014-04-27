@@ -111,7 +111,7 @@ SUIT_CONFIG = {
 
         {'label': u'自定义连接', 'icon':'icon-cog', 'models': (
             {'label': "AllenLee's Blog", 'url': '/admin/custom'},
-             {'label': '404 link', 'url': '/admin/nonexist'}
+             {'label': '404 error page', 'url': '/admin/nonexist'}
         )},
     ),
 

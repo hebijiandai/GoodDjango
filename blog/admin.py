@@ -60,7 +60,7 @@ class AuthorForm(ModelForm):
                                            '.open(\'https://www.google'
                                            '.com/\')" value="Search">',
                                     attrs={'class': 'input-small'}),
-            'title': EnclosedInput(prepend='icon-globe', append=u'夏洛克·福尔摩斯向你致意',
+            'title': EnclosedInput(prepend='icon-globe', append=u'shared',
                                    attrs={'class': 'input-medium'}),
             'frequency':EnclosedInput(prepend=u'第',append=u'次',attrs={'class':'input-mini'}),
 
