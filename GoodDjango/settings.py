@@ -42,7 +42,7 @@ INSTALLED_APPS = (
     'suit',
     'django.contrib.admin',
 
-    'south',
+    # 'south',
     'django_select2',
     'suit_redactor',
     'suit_ckeditor',
@@ -100,7 +100,7 @@ SUIT_CONFIG = {
 
         {'label': u'基础数据', 'icon':'icon-cog', 'models': (
             {'label': "物品归属(含物品编辑)", 'permissions': 'auth.add_user','url': '/admin/blog/objectattribution'},
-             {'label': '相关标签', 'permissions': 'auth.add_user','url': '/admin/blog/mark'},
+             {'label': '相关TAG', 'permissions': 'auth.add_user','url': '/admin/blog/mark'},
              {'label': '资质说明', 'url': '/admin/blog/qualification'},
              {'label': '物品材料构成', 'permissions': 'auth.add_user','url': '/admin/blog/material'},
         )},

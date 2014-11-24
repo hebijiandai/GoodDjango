@@ -42,10 +42,9 @@ class AuthorForm(ModelForm):
         label="个人资质",
         queryset=Qualification.objects,
         widget=Select2Widget(
-            select2_options={
-                'width': '200px',
+            select2_options={                'width': '200px',
             }
-        )
+        )               
     )
 
 
@@ -60,7 +59,7 @@ class AuthorForm(ModelForm):
                                            '.open(\'https://www.google'
                                            '.com/\')" value="Search">',
                                     attrs={'class': 'input-small'}),
-            'title': EnclosedInput(prepend='icon-globe', append=u'shared',
+            'title': EnclosedInput(prepend='icon-globe', append=u'马克 * 吐温',
                                    attrs={'class': 'input-medium'}),
             'frequency':EnclosedInput(prepend=u'第',append=u'次',attrs={'class':'input-mini'}),
 
