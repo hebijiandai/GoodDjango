@@ -27,6 +27,7 @@ class QualificationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 admin.site.register(Qualification, QualificationAdmin)
 
+
 class AuthorForm(ModelForm):
     mark = ModelSelect2MultipleField(
         label="博客的标签",
@@ -42,11 +43,10 @@ class AuthorForm(ModelForm):
         label="个人资质",
         queryset=Qualification.objects,
         widget=Select2Widget(
-            select2_options={                'width': '200px',
-            }
-        )               
+            select2_options={'width': '200px',
+                             }
+        )
     )
-
 
     class Meta:
         model = Author
@@ -59,22 +59,25 @@ class AuthorForm(ModelForm):
                                            '.open(\'https://www.google'
                                            '.com/\')" value="Search">',
                                     attrs={'class': 'input-small'}),
-            'title': EnclosedInput(prepend='icon-globe', append=u'马克 * 吐温',
+            'title': EnclosedInput(prepend='icon-globe', append=u'GOOD',
                                    attrs={'class': 'input-medium'}),
-            'frequency':EnclosedInput(prepend=u'第',append=u'次',attrs={'class':'input-mini'}),
+            'frequency': EnclosedInput(prepend=u'第', append=u'次', attrs={'class': 'input-mini'}),
 
-        }
+        }   
+        exclude=[]
 
 
 class AuthorResource(resources.ModelResource):
     # author= import_export.fields.Field(column_name='作者')
+
     class Meta:
         model = Author
 
-class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
+
+class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     search_fields = ('author', 'title', 'blog')
     list_display = ('author', 'title', 'time')
-    date_hierarchy=('time')
+    date_hierarchy = ('time')
 
     resource_class = AuthorResource
     form = AuthorForm
@@ -83,7 +86,7 @@ class AuthorAdmin(ImportExportModelAdmin,admin.ModelAdmin):
 
         (None,
          {'fields': ['author', 'mark', 'title', 'qualification',
-                     'time','projectname','frequency','myfile']}),
+                     'time', 'projectname', 'frequency', 'myfile']}),
 
         ('博客内容', {
             'classes': ('full-width',),
@@ -139,18 +142,17 @@ class MaterialForm(ModelForm):
         widgets = {
             # 'material':RedactorWidget,
             'Autoignition_temperature': EnclosedInput(prepend='icon-leaf', append=' <sup>o</sup>C',
-            attrs={'class': 'input-small'}),
+                                                      attrs={'class': 'input-small'}),
             'Critical_temperature': EnclosedInput(prepend='icon-globe', append=' <sup>o</sup>C',
-            attrs={'class': 'input-small'}),
+                                                  attrs={'class': 'input-small'}),
         }
+        exclude=[]
 
 
 class MaterialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     form = MaterialForm
     list_display = ('material',)
     list_select_related = True
-
-
 
     fieldsets = [
 
@@ -159,34 +161,34 @@ class MaterialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
             'classes': ('suit-tab suit-tab-material',),
             'description': 'Please input the material',
             'fields': ['material', 'Autoignition_temperature', 'Binary_phase_diagram',
-            'Boiling_point', 'Coefficient_of_thermal_expansion', 'Critical_temperature', ]}),
+                       'Boiling_point', 'Coefficient_of_thermal_expansion', 'Critical_temperature', ]}),
 
         ('Eutectic point', {
             'classes': ('suit-tab suit-tab-eutectic',),
             'description': 'Please input the Eutectic point',
             'fields': ['Eutectic_point', 'Curie_point', 'Emissivity', 'Flammability',
-            'Flash_point', 'Glass_transition_temperature',
-           'Heat_of_fusion', 'Heat_of_vaporization', 'Inversion_temperature', ]}),
+                       'Flash_point', 'Glass_transition_temperature',
+                       'Heat_of_fusion', 'Heat_of_vaporization', 'Inversion_temperature', ]}),
 
         ('Pyrophoricity', {
             'classes': ('suit-tab suit-tab-Pyrophoricity',),
             'description': 'Please input the Pyrophoricity',
             'fields': ['Pyrophoricity', 'Melting_point', 'Phase_diagram', 'Solidus',
-           'Specific_heat', 'Thermal_conductivity', 'Thermal_diffusivity', ]}),
+                       'Specific_heat', 'Thermal_conductivity', 'Thermal_diffusivity', ]}),
 
         ('montain', {
             'classes': ('suit-tab suit-tab-montain',),
             'description': 'Please input the montain',
             'fields': ['Thermal_expansion', 'Seebeck_coefficient',
-            'Triple_point', 'Vapor_pressure', 'Vicat_softening_point', ]}),
+                       'Triple_point', 'Vapor_pressure', 'Vicat_softening_point', ]}),
     ]
 
     suit_form_tabs = (('material', '材料'), ('eutectic', '共晶点'),
-                    ('Pyrophoricity', '自燃点'), ('montain', '山顶'),
-                    ('my_custom_view','我的自定义材料网站'))
+                      ('Pyrophoricity', '自燃点'), ('montain', '山顶'),
+                      ('my_custom_view', '我的自定义材料网站'))
 
     suit_form_includes = (
-        ('omg.html', 'middle','my_custom_view'),
+        ('omg.html', 'middle', 'my_custom_view'),
     )
 
 admin.site.register(Material, MaterialAdmin)
@@ -198,7 +200,7 @@ class MyobjectForm(ModelForm):
 
     class Meta:
         model = Myobject
-
+        exclude=[]
 
 class MyobjectAdmin(ImportExportModelAdmin):
     form = MyobjectForm

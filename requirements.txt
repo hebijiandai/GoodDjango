@@ -1,0 +1,12 @@
+chardet==2.3.0
+Django==1.7.1
+django-extensions==1.4.6
+django-filebrowser-django13==3.0
+django-import-export==0.2.7.dev0
+django-mptt==0.6.1
+django-reversion==1.8.5
+Django-Select2==4.2.2
+django-suit==0.2.12
+django-suit-ckeditor==0.0.2
+django-suit-redactor==0.0.2
+djangorestframework==2.4.4
