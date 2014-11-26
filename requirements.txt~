@@ -1,4 +1,5 @@
 chardet==2.3.0
+Graphiviz
 Django==1.7.1
 django-extensions==1.4.6
 django-filebrowser-django13==3.0
@@ -10,5 +11,6 @@ django-suit==0.2.12
 django-suit-ckeditor==0.0.2
 django-suit-redactor==0.0.2
 djangorestframework==2.4.4
-tablib
-diff-match-patch
+pygraphviz
+pyparsing==1.5.7
+pydot
