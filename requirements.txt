@@ -5,7 +5,7 @@ django-filebrowser-django13==3.0
 django-import-export
 django-mptt==0.6.1
 django-reversion==1.8.5
-Django-Select2==4.2.2
+Django-Select2==4.3.0
 django-suit==0.2.12
 django-suit-ckeditor==0.0.2
 django-suit-redactor==0.0.2

@@ -28,7 +28,12 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+#For Django < 1.9: You need to add to avoid request eroor
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
 # Application definition
 
 INSTALLED_APPS = (
@@ -53,16 +58,26 @@ INSTALLED_APPS = (
 
 )
 
-from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
-
-TEMPLATE_CONTEXT_PROCESSORS = TCP + (
-'django.core.context_processors.request',
-)
-
 # In settings.py
-TEMPLATE_DIRS = {
-    os.path.join(BASE_DIR, "templates"),
-}
+# TEMPLATE_DIRS = {
+#     os.path.join(BASE_DIR, "templates"),
+# }
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request', # Make sure you have this line
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 
 # Django Suit configuration example
