@@ -1,7 +1,5 @@
 # coding:utf-8
-from __future__ import unicode_literals
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 import datetime
 import os
 
@@ -10,8 +8,8 @@ class Mark(models.Model):
     mark = models.CharField('标签', max_length=50)
     license = models.CharField('证书', max_length=50)
 
-    def __unicode__(self):
-        return unicode(self.mark)
+    def __str__(self):
+        return self.mark
 
     class Meta:
         ordering = ['mark']
@@ -26,10 +24,10 @@ class Qualification(models.Model):
     license = models.CharField('证书', max_length=50)
     charactor = models.CharField('性格', max_length=50)
     level = models.SmallIntegerField('级别')
-    user =  models.CharField('填写人', max_length=50)
+    user = models.CharField('填写人', max_length=50)
 
-    def __unicode__(self):
-        return unicode(self.qualification)
+    def __str__(self):
+        return self.qualification
 
     class Meta:
         verbose_name = '资质'
@@ -47,7 +45,6 @@ def get_photo_path(instance, filename):
                                        instance.title, mydate, instance.id, ext.lower())
 
 
-@python_2_unicode_compatible
 class Author(models.Model):
     author = models.CharField('作者', max_length=50)
     title = models.CharField('标题', max_length=150)
@@ -74,8 +71,8 @@ class Author(models.Model):
             pass  # when new photo then we do nothing, normal case
         super(Author, self).save(*args, **kwargs)
 
-    # def __unicode__(self):
-    #     return unicode(self.author)
+    def __str__(self):
+        return self.author
 
     class Meta:
         ordering = ['time']
@@ -87,8 +84,8 @@ class Objectattribution(models.Model):
     attribution = models.CharField('归属', max_length=50)
     place = models.PositiveIntegerField('地点', default=0)
 
-    def __unicode__(self):
-        return unicode(self.attribution)
+    def __str__(self):
+        return self.attribution
 
     class Meta:
         verbose_name = '物品归属'
@@ -135,8 +132,8 @@ class Material(models.Model):
     Vicat_softening_point = models.CharField(
         'Vicat softening point', max_length=50)
 
-    def __unicode__(self):
-        return unicode(self.material)
+    def __str__(self):
+        return self.material
 
     class Meta:
         verbose_name_plural = '物品材料构成'
@@ -151,8 +148,8 @@ class Myobject(models.Model):
     order = models.PositiveIntegerField('顺序', default=0)
     bontime = models.DateField('生产日期')
 
-    def __unicode__(self):
-        return unicode(self.object)
+    def __str__(self):
+        return self.object
 
     class Meta:
         verbose_name_plural = '物品'
@@ -163,8 +160,8 @@ class Adress(models.Model):
     receivename = models.CharField('收件姓名', max_length=50)
     adress = models.TextField('收件地址')
 
-    def __unicode__(self):
-        return unicode(self.receivename)
+    def __str__(self):
+        return self.receivename
 
     class Meta:
         verbose_name = '收件地址'
