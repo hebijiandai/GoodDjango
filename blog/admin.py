@@ -4,7 +4,7 @@ from blog.models import *
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources
 import import_export
-
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 # from suit_ckeditor.widgets import CKEditorWidget
 from suit_redactor.widgets import RedactorWidget
@@ -12,6 +12,7 @@ from django_select2 import *
 from suit.widgets import *
 from suit.admin import *
 from reversion import VersionAdmin
+# list only they participate
 
 
 class MarkAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -20,15 +21,67 @@ class MarkAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 admin.site.register(Mark, MarkAdmin)
 
-
-class QualificationAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('qualification', 'license', 'charactor', 'level')
+# FilterUserAdmin used for all validation of filter data
 
 
-admin.site.register(Qualification, QualificationAdmin)
+class FilterUserAdmin(admin.ModelAdmin):
+
+    def save_model(self, request, obj, form, change):
+        #获取用户名
+        if getattr(obj, 'user', None) is not None:
+            obj.user = request.user.username
+        obj.save()
+
+    def get_queryset(self, request):
+        qs = super(FilterUserAdmin, self).queryset(request)
+        if request.user.is_superuser:
+            return qs
+        return qs.filter(user=request.user)
+
+    # def has_change_permission(self, request, obj=None):
+    #     if not obj:
+    #         return True
+    #     return obj.user == request.user or request.user.is_superuser
+
+
+# class QualificationForm(ModelForm):
+#     user = ModelSelect2Field(
+#         label="填写人",
+#         queryset=User.objects,
+#         widget=Select2Widget(
+#             select2_options={'width': '200px',
+#                              }
+#         )
+#     )
+
+#     class Meta:
+#         pass
+
+
+# class QualificationResource(resources.ModelResource):
+
+#     class Meta:
+#         model = Qualification
+
+
+@admin.register(Qualification)
+class QualificationAdmin(ImportExportModelAdmin, FilterUserAdmin):
+    list_display = ('qualification', 'license', 'charactor', 'level', 'user')
+    # resource_class = QualificationResource
+    # form = QualificationForm
+
+    fieldsets = [
+
+        (None,
+         {'fields': ['qualification', 'license', 'charactor', 'level']}),
+    ]
+
+
+'''分割线--------------------------------------------------------------------------------------------'''
 
 
 class AuthorForm(ModelForm):
+
     mark = ModelSelect2MultipleField(
         label="博客的标签",
         queryset=Mark.objects,
@@ -63,8 +116,8 @@ class AuthorForm(ModelForm):
                                    attrs={'class': 'input-medium'}),
             'frequency': EnclosedInput(prepend=u'第', append=u'次', attrs={'class': 'input-mini'}),
 
-        }   
-        exclude=[]
+        }
+        exclude = []
 
 
 class AuthorResource(resources.ModelResource):
@@ -98,6 +151,8 @@ class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 
 admin.site.register(Author, AuthorAdmin)
 # 主从表格式从这行开始,外键的做附属，被外键的做主表
+
+'''----------------------------------------分割线------------------------'''
 
 
 class MyobjectInlineForm(ModelForm):
@@ -146,7 +201,7 @@ class MaterialForm(ModelForm):
             'Critical_temperature': EnclosedInput(prepend='icon-globe', append=' <sup>o</sup>C',
                                                   attrs={'class': 'input-small'}),
         }
-        exclude=[]
+        exclude = []
 
 
 class MaterialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
@@ -200,7 +255,8 @@ class MyobjectForm(ModelForm):
 
     class Meta:
         model = Myobject
-        exclude=[]
+        exclude = []
+
 
 class MyobjectAdmin(ImportExportModelAdmin):
     form = MyobjectForm

@@ -59,25 +59,9 @@ INSTALLED_APPS = (
 )
 
 # In settings.py
-# TEMPLATE_DIRS = {
-#     os.path.join(BASE_DIR, "templates"),
-# }
-
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request', # Make sure you have this line
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
+TEMPLATE_DIRS = {
+    os.path.join(BASE_DIR, "templates"),
+}
 
 
 # Django Suit configuration example
@@ -85,7 +69,7 @@ TEMPLATES = [
 #注意，分组来控制权限，比较好控制
 SUIT_CONFIG = {
     # header
-    'ADMIN_NAME': '信息管理系统',
+    'ADMIN_NAME': '教务管理系统',
     # 'HEADER_DATE_FORMAT': 'l, j. F Y',
     'HEADER_DATE_FORMAT': 'Y%sm%sd%s l' %('年','月','日'),
     # 'HEADER_TIME_FORMAT': 'H:i',
@@ -116,7 +100,7 @@ SUIT_CONFIG = {
         {'label': u'基础数据', 'icon':'icon-cog', 'models': (
             {'label': "物品归属(含物品编辑)", 'permissions': 'auth.add_user','url': '/admin/blog/objectattribution'},
              {'label': '相关TAG', 'permissions': 'auth.add_user','url': '/admin/blog/mark'},
-             {'label': '资质说明', 'url': '/admin/blog/qualification'},
+             {'label': '资质-Filter','permissions': 'auth.add_user', 'url': '/admin/blog/qualification'},
              {'label': '物品材料构成', 'permissions': 'auth.add_user','url': '/admin/blog/material'},
         )},
 

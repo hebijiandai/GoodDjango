@@ -50,14 +50,6 @@
             {% endblock %}
 
             {% block header_content %}
-              <div class="header-content">
-                <div class="header-column icon">
-                  <i class="icon-comment"></i>
-                </div>
-                <div class="header-column">
-                  <a onClick="clickCounter()" href=""  id="myButton" class="grey">Hide Menu</a>
-                </div>
-              </div>
             {% endblock %}
 
             {% if user.is_active and user.is_staff %}
@@ -131,6 +123,7 @@
               {% endblock %}
               {% block sidebar_content %}
                 {% block sidebar %}{% endblock %}
+                 <!-- END Content 此处可以扩展 -->
               {% endblock %}
             </div>
             <!-- END Content -->
@@ -176,15 +169,15 @@
     <div class="content">
       <div class="tools">
         {% block footer_links %}
-          <a href="http://djangosuit.com/support/" target="_blank" class="icon"><i class="icon-question-sign"></i>Support</a>
+          <!--<a href="http://djangosuit.com/support/" target="_blank" class="icon"><i class="icon-question-sign"></i>Support</a>
           <a href="http://djangosuit.com/pricing/" target="_blank" class="icon"><i class="icon-bookmark"></i>Licence</a>
-          <a href="http://github.com/darklow/django-suit/issues" target="_blank" class="icon"><i class="icon-comment"></i>Report a bug</a>
+          <a href="http://github.com/darklow/django-suit/issues" target="_blank" class="icon"><i class="icon-comment"></i>Report a bug</a>-->
         {% endblock %}
       </div>
 
       <div class="copyright">
         {% block copyright %}
-          Copyright &copy; 2013 DjangoSuit.com<br>Developed by <a href="http://djangosuit.com" target="_blank">DjangoSuit.com</a>
+          Copyright &copy; 2017 zhongmade.com<br>Developed by ljz <a href="http://www.zhongmade.com">zhongmade.com</a>
         {% endblock %}
       </div>
 
@@ -206,50 +199,5 @@
 
 </body>
 </html>
-
-<script>
-    function changeCss() {
-        //If you want to hide the arrow absolutely,add this.
-        var suitInput = document.getElementById('suit-left');
-        suitInput.style.display = 'none';
-
-        var wrap = document.getElementById('wrap');
-        wrap.style.background = 'inherit';
-
-        var suitCol = document.getElementsByClassName('suit-columns')[0];
-        suitCol.style.paddingLeft = '0';
-    }
-
-    //Use session storage to complete the work.
-    function clickCounter() {
-
-        if (document.getElementById('myButton').firstChild.data == "Hide Menu") {
-            document.getElementById('myButton').firstChild.data = "Show Menu";
-            changeCss();
-        }
-        else {
-            window.location.reload();
-            document.getElementById('myButton').firstChild.data = "Hide Menu";
-        }
-
-        sessionStorage.menuMark = document.getElementById('myButton').firstChild.data;
-
-    }
-
-    function loadCounter() {
-        document.getElementById('myButton').firstChild.data = sessionStorage.menuMark;
-
-        if (document.getElementById('myButton').firstChild.data == "Show Menu") {
-            myData = "Hide Menu";
-            changeCss();
-        }
-
-    }
-
-
-</script>
-
-
-
 
 

@@ -1,23 +1,12 @@
 # coding:utf-8
-# from django.shortcuts import render
-#
-# from django.template import loader, Context
-# from django.http import HttpResponse
-# from blog.models import *
-# from django.contrib.admin.views.decorators import staff_member_required
-#
-#
-# @staff_member_required
-# def custom_view(request):
-#     posts = Author.objects.all()
-#     t = loader.get_template('admin/custom_view.html')
-#     c = Context({'posts': posts})
-#     return HttpResponse(t.render(c))
 from django.contrib.admin.views.decorators import staff_member_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from blog.models import *
+from django.shortcuts import redirect
 
+def main_view(request):
+    return redirect('http://zhongmade.com/')
 
 @staff_member_required
 def custom_view(request):
