@@ -10,5 +10,4 @@ django-suit==0.2.12
 django-suit-ckeditor==0.0.2
 django-suit-redactor==0.0.2
 djangorestframework==2.4.4
-tablib
 diff-match-patch

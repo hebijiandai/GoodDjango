@@ -98,21 +98,21 @@ SUIT_CONFIG = {
         #   'Qualification','Mark','Author','Myobject','Adress'),'icon': 'icon-leaf'},
 
         {'label': u'基础数据', 'icon':'icon-cog', 'models': (
-            {'label': "物品归属(含物品编辑)", 'permissions': 'auth.add_user','url': '/admin/blog/objectattribution'},
-             {'label': '相关TAG', 'permissions': 'auth.add_user','url': '/admin/blog/mark'},
-             {'label': '资质-Filter','permissions': 'auth.add_user', 'url': '/admin/blog/qualification'},
-             {'label': '物品材料构成', 'permissions': 'auth.add_user','url': '/admin/blog/material'},
+            {'label': "物品归属(含物品编辑)", 'url': '/admin/blog/objectattribution'},
+             {'label': '相关TAG', 'url': '/admin/blog/mark'},
+             {'label': '资质-Filter', 'url': '/admin/blog/qualification'},
+             {'label': '物品材料构成', 'url': '/admin/blog/material'},
         )},
 
    		{'label': u'作者相关','icon':'icon-cog', 'models': (
             {'label': "个人博客", 'url': '/admin/blog/author'},
-             {'label': '物品列表','permissions': 'auth.add_user', 'url': '/admin/blog/myobject'},
-             {'label': '地址', 'permissions': 'auth.add_user','url': '/admin/blog/adress'},
+             {'label': '物品列表', 'url': '/admin/blog/myobject'},
+             {'label': '地址', 'url': '/admin/blog/adress'},
         )},
 
-        {'label': u'自定义连接', 'permissions': 'auth.add_user','icon':'icon-cog', 'models': (
-            {'label': "AllenLee's Blog", 'permissions': 'auth.add_user','url': '/admin/custom'},
-             {'label': '404 error page', 'permissions': 'auth.add_user','url': '/admin/nonexist'}
+        {'label': u'自定义连接', 'icon':'icon-cog', 'models': (
+            {'label': "AllenLee's Blog", 'url': '/admin/custom'},
+             {'label': '404 error page', 'url': '/admin/nonexist'}
         )},
     ),
 
