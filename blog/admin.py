@@ -15,19 +15,10 @@ from reversion import VersionAdmin
 # list only they participate
 
 
-class MarkAdmin(ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('mark', 'license')
-
-
-admin.site.register(Mark, MarkAdmin)
-
-# FilterUserAdmin used for all validation of filter data
-
-
 class FilterUserAdmin(admin.ModelAdmin):
 
     def save_model(self, request, obj, form, change):
-        #获取用户名
+        # 获取用户名
         if getattr(obj, 'user', None) is not None:
             obj.user = request.user.username
         obj.save()
@@ -62,6 +53,14 @@ class FilterUserAdmin(admin.ModelAdmin):
 
 #     class Meta:
 #         model = Qualification
+
+
+@admin.register(Mark)
+class MarkAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = ('mark', 'license')
+
+
+# FilterUserAdmin used for all validation of filter data
 
 
 @admin.register(Qualification)
@@ -121,12 +120,14 @@ class AuthorForm(ModelForm):
 
 
 class AuthorResource(resources.ModelResource):
+
     # author= import_export.fields.Field(column_name='作者')
 
     class Meta:
         model = Author
 
 
+@admin.register(Author)
 class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     search_fields = ('author', 'title', 'blog')
     list_display = ('author', 'title', 'time')
@@ -149,7 +150,6 @@ class AuthorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ]
 
 
-admin.site.register(Author, AuthorAdmin)
 # 主从表格式从这行开始,外键的做附属，被外键的做主表
 
 '''----------------------------------------分割线------------------------'''
@@ -169,6 +169,7 @@ class MyobjectInlineForm(ModelForm):
 
 
 class MyobjectInline(SortableTabularInline):
+
     form = MyobjectInlineForm
     model = Myobject
     fields = ('object', 'content', 'attribution', 'material', 'bontime')
@@ -177,6 +178,7 @@ class MyobjectInline(SortableTabularInline):
     sortable = 'order'
 
 
+@admin.register(Objectattribution)
 class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin, admin.ModelAdmin):
     form = MyobjectInlineForm
     search_fields = ('attribution',)
@@ -186,8 +188,6 @@ class MyObjectAttributionAdmin(ImportExportModelAdmin, SortableModelAdmin, admin
 
     def amount(self, obj):
         return len(obj.myobject_set.all())
-
-admin.site.register(Objectattribution, MyObjectAttributionAdmin)
 
 
 class MaterialForm(ModelForm):
@@ -204,6 +204,7 @@ class MaterialForm(ModelForm):
         exclude = []
 
 
+@admin.register(Material)
 class MaterialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     form = MaterialForm
     list_display = ('material',)
@@ -246,8 +247,6 @@ class MaterialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
         ('omg.html', 'middle', 'my_custom_view'),
     )
 
-admin.site.register(Material, MaterialAdmin)
-
 
 class MyobjectForm(ModelForm):
     attribution = ModelSelect2Field(
@@ -258,17 +257,13 @@ class MyobjectForm(ModelForm):
         exclude = []
 
 
+@admin.register(Myobject)
 class MyobjectAdmin(ImportExportModelAdmin):
     form = MyobjectForm
     search_fields = ('object', 'content')
     list_display = ('object', 'attribution', 'bontime',)
 
 
-admin.site.register(Myobject, MyobjectAdmin)
-
-
+@admin.register(Adress)
 class AdressAdmin(VersionAdmin):
     list_display = ('receivename', 'adress')
-
-
-admin.site.register(Adress, AdressAdmin)
