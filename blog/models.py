@@ -41,7 +41,7 @@ def get_photo_path(instance, filename):
     mydate = datetime.datetime.now().strftime('%Y%m')
     # 分离文件名和文件扩展名
     fname, ext = os.path.splitext(filename)
-    return './%s/%s-%s-%s-第%s号文件%s' % (instance.projectname, instance.author,
+    return './UploadFiles/%s/%s-%s-%s-第%s号文件%s' % (instance.projectname, instance.author,
                                        instance.title, mydate, instance.id, ext.lower())
 
 
