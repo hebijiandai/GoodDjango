@@ -16,6 +16,9 @@ class Mark(models.Model):
         verbose_name = '文章的标签'
         verbose_name_plural = '文章的标签'
 
+    def __unicode__(self):
+        return self.mark
+
 # 增加user，比照账户的名字，类似access数据库的处理
 
 
@@ -33,6 +36,9 @@ class Qualification(models.Model):
         verbose_name = '资质'
         verbose_name_plural = '资质'
 
+    def __unicode__(self):
+        return self.qualification
+
 # 自定义Filefield，Imaginfiled的路径名
 
 
@@ -41,8 +47,8 @@ def get_photo_path(instance, filename):
     mydate = datetime.datetime.now().strftime('%Y%m')
     # 分离文件名和文件扩展名
     fname, ext = os.path.splitext(filename)
-    return './UploadFiles/%s/%s-%s-%s-第%s号文件%s' % (instance.projectname, instance.author,
-                                       instance.title, mydate, instance.id, ext.lower())
+    return u'./UploadFiles/%s/%s-%s-%s-第%s号文件%s' % (instance.projectname, instance.author,
+                                                    instance.title, mydate, instance.id, ext.lower())
 
 
 class Author(models.Model):
@@ -76,6 +82,9 @@ class Author(models.Model):
         verbose_name = '相关博客'
         verbose_name_plural = '相关博客'
 
+    def __unicode__(self):
+        return self.author
+
 
 class Objectattribution(models.Model):
     attribution = models.CharField('归属', max_length=50)
@@ -87,6 +96,9 @@ class Objectattribution(models.Model):
     class Meta:
         verbose_name = '物品归属'
         verbose_name_plural = '物品归属'
+
+    def __unicode__(self):
+        return self.attribution
 
 
 class Material(models.Model):
@@ -136,6 +148,9 @@ class Material(models.Model):
         verbose_name_plural = '物品材料构成'
         verbose_name = '物品材料构成'
 
+    def __unicode__(self):
+        return self.material
+
 
 class Myobject(models.Model):
     object = models.CharField('物品', max_length=50)
@@ -152,6 +167,9 @@ class Myobject(models.Model):
         verbose_name_plural = '物品'
         verbose_name = '物品'
 
+    def __unicode__(self):
+        return self.object
+
 
 class Adress(models.Model):
     receivename = models.CharField('收件姓名', max_length=50)
@@ -163,6 +181,9 @@ class Adress(models.Model):
     class Meta:
         verbose_name = '收件地址'
         verbose_name_plural = '收件地址'
+
+    def __unicode__(self):
+        return self.receivename
 
 
 class CustomView(models.Model):
