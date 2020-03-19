@@ -9,5 +9,5 @@ Django-Select2==4.3.2
 django-suit==0.2.12
 django-suit-ckeditor==0.0.2
 django-suit-redactor==0.0.2
-djangorestframework==2.4.4
+djangorestframework==3.9.1
 diff-match-patch
