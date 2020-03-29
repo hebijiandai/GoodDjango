@@ -102,44 +102,44 @@ class Objectattribution(models.Model):
 
 
 class Material(models.Model):
-    material = models.CharField('material', max_length=50)
+    material = models.CharField('材料名称', max_length=50)
     Autoignition_temperature = models.SmallIntegerField(
-        'Autoignition temperature', max_length=50)
+        '自燃温度', max_length=50)
     Binary_phase_diagram = models.CharField(
-        'Binary phase diagram', max_length=50)
-    Boiling_point = models.CharField('Boiling point', max_length=50)
+        '二进制相图', max_length=50)
+    Boiling_point = models.CharField('沸点', max_length=50)
     Coefficient_of_thermal_expansion = models.CharField(
-        'Coefficient of thermal expansion', max_length=50)
+        '热膨胀系数', max_length=50)
     Critical_temperature = models.SmallIntegerField(
-        'Critical temperature', max_length=50)
-    Curie_point = models.CharField('Curie point', max_length=50)
-    Emissivity = models.CharField('Emissivity', max_length=50)
-    Eutectic_point = models.CharField('Eutectic point', max_length=50)
-    Flammability = models.CharField('Flammability', max_length=50)
-    Flash_point = models.CharField('Flash point', max_length=50)
+        '临界温度', max_length=50)
+    Curie_point = models.CharField('居里点', max_length=50)
+    Emissivity = models.CharField('发射率', max_length=50)
+    Eutectic_point = models.CharField('共晶点', max_length=50)
+    Flammability = models.CharField('可燃性', max_length=50)
+    Flash_point = models.CharField('闪点', max_length=50)
     Glass_transition_temperature = models.CharField(
-        'Glass transition temperature', max_length=50)
-    Heat_of_fusion = models.CharField('Heat of fusion', max_length=50)
+        '相图', max_length=50)
+    Heat_of_fusion = models.CharField('融合热', max_length=50)
     Heat_of_vaporization = models.CharField(
-        'Heat of vaporization', max_length=50)
+        '汽化热', max_length=50)
     Inversion_temperature = models.CharField(
-        'Inversion temperature', max_length=50)
-    Melting_point = models.CharField('Melting point', max_length=50)
-    Phase_diagram = models.CharField('Phase diagram', max_length=50)
-    Pyrophoricity = models.CharField('Pyrophoricity', max_length=50)
-    Solidus = models.CharField('Solidus', max_length=50)
-    Specific_heat = models.CharField('Specific heat', max_length=50)
+        '反转温度', max_length=50)
+    Melting_point = models.CharField('熔点', max_length=50)
+    Phase_diagram = models.CharField('相图', max_length=50)
+    Pyrophoricity = models.CharField('发火性', max_length=50)
+    Solidus = models.CharField('固相线', max_length=50)
+    Specific_heat = models.CharField('比热', max_length=50)
     Thermal_conductivity = models.CharField(
-        'Thermal conductivity', max_length=50)
+        '导热系数', max_length=50)
     Thermal_diffusivity = models.CharField(
-        'Thermal diffusivity', max_length=50)
-    Thermal_expansion = models.CharField('Thermal expansion', max_length=50)
+        '热扩散系数', max_length=50)
+    Thermal_expansion = models.CharField('热膨胀', max_length=50)
     Seebeck_coefficient = models.CharField(
-        'Seebeck coefficient', max_length=50)
-    Triple_point = models.CharField('Triple point', max_length=50)
-    Vapor_pressure = models.CharField('Vapor pressure', max_length=50)
+        '塞贝克系数', max_length=50)
+    Triple_point = models.CharField('三点', max_length=50)
+    Vapor_pressure = models.CharField('蒸汽压力', max_length=50)
     Vicat_softening_point = models.CharField(
-        'Vicat softening point', max_length=50)
+        '维卡软化点', max_length=50)
 
     def __str__(self):
         return self.material
