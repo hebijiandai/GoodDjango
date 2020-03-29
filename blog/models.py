@@ -79,8 +79,8 @@ class Author(models.Model):
 
     class Meta:
         ordering = ['time']
-        verbose_name = '相关博客'
-        verbose_name_plural = '相关博客'
+        verbose_name = '相关的BLOG'
+        verbose_name_plural = '相关的BLOG'
 
     def __unicode__(self):
         return self.author
