@@ -5,7 +5,7 @@ import os
 
 
 class Mark(models.Model):
-    mark = models.CharField('标签', max_length=50)
+    mark = models.CharField('标签_tag', max_length=50)
     license = models.CharField('证书', max_length=50)
 
     def __str__(self):

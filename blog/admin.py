@@ -267,3 +267,5 @@ class MyobjectAdmin(ImportExportModelAdmin):
 @admin.register(Adress)
 class AdressAdmin(VersionAdmin):
     list_display = ('receivename', 'adress')
+
+
