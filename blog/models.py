@@ -94,7 +94,7 @@ class Objectattribution(models.Model):
         return self.attribution
 
     class Meta:
-        verbose_name = '物品归属'
+        verbose_name = '物品归属HAHAHA'
         verbose_name_plural = '物品归属'
 
     def __unicode__(self):
