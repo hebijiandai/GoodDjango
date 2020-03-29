@@ -164,8 +164,8 @@ class Myobject(models.Model):
         return self.object
 
     class Meta:
-        verbose_name_plural = '我们的物品'
-        verbose_name = '我们的物品'
+        verbose_name_plural = '我们物品'
+        verbose_name = '我们物品'
 
     def __unicode__(self):
         return self.object
