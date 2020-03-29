@@ -174,7 +174,7 @@ class MyobjectInline(SortableTabularInline):
     model = Myobject
     fields = ('object', 'content', 'attribution', 'material', 'bontime')
     extra = 1
-    verbose_name_plural = '物品列表子窗体'
+    verbose_name_plural = '物品列表sub_child窗体'
     sortable = 'order'
 
 
