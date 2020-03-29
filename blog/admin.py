@@ -239,9 +239,9 @@ class MaterialAdmin(ImportExportModelAdmin, admin.ModelAdmin):
                        'Triple_point', 'Vapor_pressure', 'Vicat_softening_point', ]}),
     ]
 
-    suit_form_tabs = (('material', '材料'), ('eutectic', '共晶点'),
-                      ('Pyrophoricity', '自燃点'), ('montain', '山顶'),
-                      ('my_custom_view', '我的自定义材料网站'))
+    suit_form_tabs = (('material', 'material'), ('eutectic', 'eutectic'),
+                      ('Pyrophoricity', 'Pyrophoricity'), ('montain', 'montain'),
+                      ('my_custom_view', 'my_custom_view'))
 
     suit_form_includes = (
         ('omg.html', 'middle', 'my_custom_view'),
