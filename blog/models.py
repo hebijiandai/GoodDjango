@@ -153,7 +153,7 @@ class Material(models.Model):
 
 
 class Myobject(models.Model):
-    object = models.CharField('物品', max_length=50)
+    object = models.CharField('生产物品', max_length=50)
     content = models.CharField('产品内容', max_length=50)
     attribution = models.ForeignKey(Objectattribution)
     material = models.ForeignKey(Material)
@@ -164,8 +164,8 @@ class Myobject(models.Model):
         return self.object
 
     class Meta:
-        verbose_name_plural = '物品'
-        verbose_name = '物品'
+        verbose_name_plural = '我们的物品'
+        verbose_name = '我们的物品'
 
     def __unicode__(self):
         return self.object
