@@ -12,7 +12,7 @@ def main_view(request):
 def custom_view(request):
     posts = Author.objects.all()
     context = {
-        'title': "AllenLee's Blog",
+        'title': "李金忠's Blog",
         'posts': posts,
     }
 
