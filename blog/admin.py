@@ -108,7 +108,7 @@ class AuthorForm(ModelForm):
             'author': EnclosedInput(prepend='icon-user',
                                     append='<input type="button" '
                                            'class="btn" onclick="window'
-                                           '.open(\'https://www.google'
+                                           '.open(\'https://www.baidu'
                                            '.com/\')" value="Search">',
                                     attrs={'class': 'input-small'}),
             'title': EnclosedInput(prepend='icon-globe', append=u'GOOD',

@@ -13,8 +13,8 @@ class Mark(models.Model):
 
     class Meta:
         ordering = ['mark']
-        verbose_name = '文章的标签'
-        verbose_name_plural = '文章的标签'
+        verbose_name = '文章的标签不合理'
+        verbose_name_plural = '文章的标签不合理'
 
     def __unicode__(self):
         return self.mark
