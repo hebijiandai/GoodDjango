@@ -56,7 +56,7 @@ class Author(models.Model):
     title = models.CharField('标题', max_length=150)
     qualification = models.ForeignKey(Qualification)
     mark = models.ManyToManyField(Mark)
-    myfile = models.FileField('我的文件', upload_to=get_photo_path)
+    myfile = models.FileField('我的文件安排', upload_to=get_photo_path)
     projectname = models.CharField('项目备注', max_length=50)
     frequency = models.SmallIntegerField('提交频次', max_length=10)
     blog = models.TextField('博客内容')
