@@ -33,8 +33,8 @@ class Qualification(models.Model):
         return self.qualification
 
     class Meta:
-        verbose_name = '资质'
-        verbose_name_plural = '资质'
+        verbose_name = '资质安排'
+        verbose_name_plural = '资质安排'
 
     def __unicode__(self):
         return self.qualification
