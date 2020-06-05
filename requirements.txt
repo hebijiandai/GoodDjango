@@ -1,5 +1,5 @@
 chardet==2.3.0
-Django==1.7.1
+Django==1.11.29
 django-extensions==1.4.6
 django-filebrowser-django13==3.0
 git+https://github.com/hebijiandai/django-import-export.git
